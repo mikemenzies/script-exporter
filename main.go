@@ -135,7 +135,7 @@ func (sh *ScriptHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		result := <-reschan
 
 		if result.err != nil {
-			log.Printf("error running script '%s': %v", script, result.err)
+			log.Printf("error running script '%s': %v", script, result.err, result.output)
 		} else if err := serveMetricsFromText(sh.opentsdb, w, r, result.output); err != nil {
 			log.Printf("error parsing output from script '%s': %v", script, err)
 			mParseErrors.WithLabelValues(script).Add(1)
