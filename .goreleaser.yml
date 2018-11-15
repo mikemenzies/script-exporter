@@ -5,5 +5,4 @@ builds:
     goarch:
       - amd64
 release:
-  draft: false
-  prerelease: false
+  disable: true
